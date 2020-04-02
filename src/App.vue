@@ -30,7 +30,7 @@ body {
   font: 400 1.5em Roboto, sans-serif; 
   text-align: center;
   color: rgb(33, 43, 54);
-  background-color: #c9ff96;
+  background-color: #ceebf5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

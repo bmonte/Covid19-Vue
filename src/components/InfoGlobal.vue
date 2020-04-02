@@ -5,19 +5,19 @@
         .global-cases
           .global-cases-header.p-2
             h3 {{title}}
-            h6.pt-2 Ultima atualização: {{globalCasesInfo.dt}}
+            h6.pt-2 Ultima atualização: {{globalCasesInfo.lastUpdate | formatData}}
           .row
             .col-10.col-md-4.offset-1.offset-md-0.my-2
               .card.p-4
-                h4.text-warning {{globalCasesInfo.data.confirmed | formatPrice}}
+                h4.text-warning {{globalCasesInfo.confirmed.value | formatPrice}}
                 h6 Confirmados
             .col-10.col-md-4.offset-1.offset-md-0.my-2
               .card.p-4
-                h4.text-success {{globalCasesInfo.data.recovered | formatPrice}}
+                h4.text-success {{globalCasesInfo.recovered.value | formatPrice}}
                 h6 Recuperados
             .col-10.col-md-4.offset-1.offset-md-0.my-2
               .card.p-4
-                h4.text-danger {{globalCasesInfo.data.deaths | formatPrice}}
+                h4.text-danger {{globalCasesInfo.deaths.value | formatPrice}}
                 h6 Mortes
 </template>
 
@@ -42,26 +42,13 @@ export default {
   },
 
   filters: {
-    formatPrice: function(value) {
-      const val = (value / 1)
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    formatPrice: (value)  => {
+      return (value / 1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
+
+    formatData: (_data) => {
+      return new Date(Date.parse(_data)).toLocaleString()
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.global-cases-header {
-  h6 {
-    font-weight: 300;
-  }
-}
-
-.card {
-  transition: box-shadow 0.5s;
-  
-  &:hover{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-  }
-}
-</style>
