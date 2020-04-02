@@ -26,9 +26,9 @@ export default {
   box-sizing: border-box;
 }
 
-#app {
+body {
   // Altura e background
-  min-height: 100vh;
+  height: 100vh;
   background-color: #ceebf5;
   // Font
   font: 400 1.5em Roboto, sans-serif;
